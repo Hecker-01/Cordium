@@ -18,6 +18,12 @@ android {
     }
 
     signingConfigs {
+        create("debug") {
+            storeFile = file("cordium-debug.keystore")
+            storePassword = "CordiumPassw"
+            keyAlias = "cordium"
+            keyPassword = "CordiumPassw"
+        }
         create("release") {
             storeFile = file("cordium-release.keystore")
             storePassword = "CordiumPassw"
@@ -30,6 +36,7 @@ android {
         debug {
             applicationIdSuffix = ".dev"
             versionNameSuffix = "-dev"
+            signingConfig = signingConfigs.getByName("debug")
         }
         release {
             isMinifyEnabled = false
